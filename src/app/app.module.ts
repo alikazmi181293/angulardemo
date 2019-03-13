@@ -12,17 +12,27 @@ import { routerNgProbeToken } from '@angular/router/src/router_module';
 import { HomeComponent } from './home/home.component';
 import { AccountService } from './service/account.service';
 import { AuthGuard } from './auth/auth.guard';
+import { CourseComponent } from './course/course.component';
+import { CourseService } from './service/course.service';
+import { RegisterCourseComponent } from './register-course/register-course.component';
+import { UpdateCourseComponent } from './update-course/update-course.component';
 
 const routeConfig=[ { path:'register',component: RegisterFormComponent },
                     { path:'login',component: LoginFormComponent },
-                    { path:'home',component: HomeComponent,canActivate:[AuthGuard] } ];
+                    { path:'home',component: HomeComponent,canActivate:[AuthGuard] },
+                    { path:'course/update/:id',component: UpdateCourseComponent,canActivate:[AuthGuard] },
+                    { path:'course/register',component: RegisterCourseComponent,canActivate:[AuthGuard] },
+                    { path:'course',component: CourseComponent,canActivate:[AuthGuard] } ];
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginFormComponent,
     RegisterFormComponent,
-    HomeComponent
+    HomeComponent,
+    CourseComponent,
+    RegisterCourseComponent,
+    UpdateCourseComponent
   ],
   imports: [
     BrowserModule,
@@ -34,7 +44,8 @@ const routeConfig=[ { path:'register',component: RegisterFormComponent },
   ],
   providers: [
     AccountService,
-    AuthGuard
+    AuthGuard,
+    CourseService
   ],
   bootstrap: [AppComponent]
 })

@@ -1,0 +1,24 @@
+<div style="padding:5%">
+<a class="btn btn-primary" style="color:white;margin-bottom: 2%" [routerLink]="['/course/register']">Register Course</a>
+  <table class="table">
+    <thead class="thead-dark">
+      <tr>
+          <th>Name</th>
+          <th>Description</th>
+          <th>Credit Hours</th>
+          <th>Edit</th>
+          <th>Delete</th>    
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let course of courses">
+        <td>{{course.Name}}</td>
+        <td>{{course.Description}}</td>
+        <td>{{course.CreditHours}}</td>
+        <td><a class="btn btn-primary" style="color:white" [routerLink]="['/course/update',course.Id]">Edit</a></td>
+        <td><button class="btn btn-danger" (click)="delete(course)">Delete</button></td>
+      </tr>
+    </tbody>
+  </table>
+
+</div>
